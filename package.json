@@ -1,0 +1,48 @@
+{
+  "name": "breachsolver",
+  "version": "1.0.0",
+  "description": "A simple solver for breach protocols in Cyberpunk 2077",
+  "main": "dist/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "npx mocha ./test/*.ts",
+    "build": "npx tsc -p ./tsconfig.json",
+    "minify": "npx minify dist/index.js > dist/index.min.js",
+    "clean": "npx rimraf dist",
+    "browserify": "npx browserify dist/index.js --standalone MarkovGenerator -o docs/scripts/generator.js",
+    "cleanbuild": "npm run clean && npm run build && npm run minify && npm run browserify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unarekin/BreachSolver.git"
+  },
+  "keywords": [],
+  "author": "Erica Phelps <erica@blackspork.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Unarekin/BreachSolver/issues"
+  },
+  "homepage": "https://github.com/Unarekin/BreachSolver#readme",
+  "mocha": {
+    "require": [
+      "source-map-support/register",
+      "ts-node/register"
+    ],
+    "full-trace": true,
+    "reporter": "mochawesome",
+    "reporter-options": "reportFilename=report,reportTitle=Breach Solver Tests,reportPageTitle=Breach Solver Tests,reportDir=./test/reports"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.14",
+    "chai": "^4.2.0",
+    "minify": "^6.0.1",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
